@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "17dd046b-d5ca-4a54-b133-082d6a39f027",
+		"name": "File Handling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32797175"
+	},
+	"item": [
+		{
+			"name": "File Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1eec4bf3-280b-4f00-8479-43fea52f360d",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1eec4be9-5e18-4800-9a4f-01110a207569",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/hp/OneDrive/Desktop/file-upload-api/.eslintrc.js",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/hp/OneDrive/Desktop/file-upload-api/package.json"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all files",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One File",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/files/65c2087092298943db42fbe8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"files",
+						"65c2087092298943db42fbe8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a File",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/files/65c2087092298943db42fbe8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"files",
+						"65c2087092298943db42fbe8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
