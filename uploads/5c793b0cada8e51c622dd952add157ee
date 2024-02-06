@@ -1,0 +1,67 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('./db'); // Import MongoDB connection
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const FileModel = require('./fileModel'); // Import the FileModel
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+
+// Default route for the root path
+app.get('/', (req, res) => {
+    res.send('Welcome to the File Upload API');
+});
+
+// Define your APIs here
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+// Upload a file and store it in a local path. Save file details in the database.
+app.post('/upload', upload.single('file'), (req, res) => {
+    // Implement file upload logic and save details to the database
+    res.send('File uploaded successfully');
+});
+
+// Get all files and show the list
+app.get('/files', async (req, res) => {
+    try {
+        // Fetch all files from the database (adjust the model name accordingly)
+        const files = await FileModel.find();
+
+        // Return the list of files as JSON
+        res.json(files);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+// Get one file
+app.get('/files/:id', async (req, res) => {
+    try {
+        const file = await FileModel.findById(req.params.id);
+
+        if (!file) {
+            return res.status(404).send('File not found');
+        }
+
+        res.json(file);
+    } catch (error) {
+        console.error('Error in /files/:id:', error); // Log the error details
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+// Delete a file
+app.delete('/files/:id', (req, res) => {
+    // Implement logic to delete a file from the database and local path
+    res.send('File deleted successfully');
+});
